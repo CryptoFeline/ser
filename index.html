@@ -95,7 +95,31 @@
         <div class="column-4 w-col w-col-10">
           <div class="w-layout-blockcontainer container-2 w-container">
             <p class="paragraph-2"><strong>Contract Address:</strong><br></p>
-            <p class="paragraph-2">0x309850e0F7d5191B708eBaC76b14161dC3046385<br></p>
+            <p class="paragraph-2 copy-text" onclick="copyToClipboard(this)">0x309850e0F7d5191B708eBaC76b14161dC3046385<br></p>
+            <p class="paragraph-2" id="status" style="color: lime;"></p>
+            <style>.copy-text {cursor: pointer;}</style>
+            <script>
+                function copyToClipboard(element) {
+                    const text = element.textContent || element.innerText;
+
+                    // Create a temporary text area to copy the content
+                    const tempTextArea = document.createElement("textarea");
+                    tempTextArea.value = text;
+                    document.body.appendChild(tempTextArea);
+
+                    // Select and copy the text
+                    tempTextArea.select();
+                    tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+                    document.execCommand("copy");
+
+                    // Remove the temporary text area
+                    document.body.removeChild(tempTextArea);
+
+                    // Provide feedback to the user
+                    const statusElement = document.getElementById("status");
+                    statusElement.textContent = `✅`;
+                }
+            </script>
           </div>
         </div>
       </div>
